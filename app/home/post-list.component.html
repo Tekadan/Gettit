@@ -22,15 +22,15 @@
                 <tr>
                     <th># Votes</th>
                     <th>Title</th>
-                    <th>Tag</th>
+                    <th>Subreddit</th>
                     <th># Comments</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="#post of posts">
+                <tr *ngFor="#post of posts | postFilter:filterText">
                     <td>{{post.numVotes}}</td>
                     <td><a [href]="post.url">{{post.title}}</a></td>
-                    <td>{{post.tag}}</td>
+                    <td>{{post.subreddit}}</td>
                     <td>{{post.numComments}}</td>
                 </tr>
             </tbody>

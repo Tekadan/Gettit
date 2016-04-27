@@ -1,7 +1,7 @@
 export interface IPost{
     numComments: number;
     numVotes: number;
-    tag: string;
+    subreddit: string;
     title: string;
     url: string;
 }

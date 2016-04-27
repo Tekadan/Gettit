@@ -1,9 +1,12 @@
 import { Component } from 'angular2/core';
+
 import { IPost } from './post';
+import { PostFilterPipe } from './post-filter.pipe';
 
 @Component({
     selector: 'gettit-postList',
-    templateUrl: 'app/home/post-list.component.html'
+    templateUrl: 'app/home/post-list.component.html',
+    pipes: [PostFilterPipe]
 })
 export class PostListComponent{
     filterText: string = '';
@@ -14,14 +17,14 @@ export class PostListComponent{
         {
             numVotes: 1401,
             title: 'Dog that knows he is a good boy',
-            tag: 'Dogs',
+            subreddit: 'Dogs',
             numComments: 255,
             url: "www.google.com"
         },
         {
             numVotes: 392,
             title: 'Left Shark at beach',
-            tag: 'Farming',
+            subreddit: 'Farming',
             numComments: 111,
             url: "www.reddit.com"
         }
