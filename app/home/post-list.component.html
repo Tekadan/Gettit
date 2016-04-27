@@ -1,0 +1,38 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-4'>
+                <input type='text' />
+            </div>
+            <div class='col-md-offset-2 col-md-2'>
+                <button class='btn btn-primary'
+                    (click)='refreshPosts()'>
+                    {{isRefreshing ? 'Refreshing' : 'Refresh'}}
+                </button>   
+            </div>
+        </div>
+        <table class='table'
+                *ngIf='posts && posts.length'>
+            <thead>
+                <tr>
+                    <th># Votes</th>
+                    <th>Title</th>
+                    <th>Tag</th>
+                    <th># Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#post of posts">
+                    <td>{{post.numVotes}}</td>
+                    <td><a [href]="post.url">{{post.title}}</a></td>
+                    <td>{{post.tag}}</td>
+                    <td>{{post.numComments}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
