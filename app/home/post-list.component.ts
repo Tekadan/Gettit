@@ -1,13 +1,16 @@
 import { Component } from 'angular2/core';
+import { IPost } from './post';
 
 @Component({
     selector: 'gettit-postList',
     templateUrl: 'app/home/post-list.component.html'
 })
 export class PostListComponent{
+    filterText: string = '';
+    isFiltering: boolean = false;
     isRefreshing: boolean = false;
     pageTitle: string = 'Popular on Reddit';
-    posts: any[] = [
+    posts: IPost[] = [
         {
             numVotes: 1401,
             title: 'Dog that knows he is a good boy',
@@ -24,6 +27,10 @@ export class PostListComponent{
         }
     ];
     
+    filterPosts(): void {
+        
+    };
+    
     refreshPosts(): void {
         if(this.isRefreshing){
             return;
@@ -35,5 +42,5 @@ export class PostListComponent{
             console.log('Posts refreshed.');
             this.isRefreshing = false;
         }, 1000);
-    }
+    };
 }
