@@ -1,4 +1,6 @@
 import {Component} from 'angular2/core';
+import { HTTP_PROVIDERS } from 'angular2/http';
+import 'rxjs/Rx';
 import {PostListComponent} from './home/post-list.component';
 import {PostService} from './home/post.service';
 
@@ -9,7 +11,8 @@ import {PostService} from './home/post.service';
     <gettit-postList>Loading Posts...</gettit-postList>
     `,
     directives: [PostListComponent],
-    providers: [PostService]
+    providers: [PostService,
+                HTTP_PROVIDERS]
 })
 export class AppComponent { 
     pageTitle: string = 'Gettit: An Angular 2 Project cosuming the Reddit API';

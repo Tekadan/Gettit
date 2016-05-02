@@ -22,7 +22,7 @@ export class PostListComponent implements OnInit {
     
     ngOnInit(): void {
         console.log('Initialization of PostListComponent');
-        this.posts = this._postService.getTopPosts();
+        this.posts = this._postService.getTopPosts()[0];
     }
     
     refreshPosts(): void {
