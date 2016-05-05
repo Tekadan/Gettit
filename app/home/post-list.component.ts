@@ -10,6 +10,7 @@ import { PostService } from './post.service';
     pipes: [PostFilterPipe]
 })
 export class PostListComponent implements OnInit {
+    errorMessage: string;
     filterText: string;
     isFiltering: boolean = false;
     isRefreshing: boolean = false;
@@ -22,7 +23,10 @@ export class PostListComponent implements OnInit {
     
     ngOnInit(): void {
         console.log('Initialization of PostListComponent');
-        this.posts = this._postService.getTopPosts()[0];
+        this._postService.getTopPosts()
+            .subscribe(
+                posts => this.posts = posts,
+                error => this.errorMessage = <any>error);
     }
     
     refreshPosts(): void {
