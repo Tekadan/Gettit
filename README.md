@@ -5,5 +5,8 @@ The goal of this project is to create an application that:
  - Allows the user to refresh the results
  - Have dynamic links based on the results that will direct the user to the actual reddit post if they wish to do so
  
+ To use this application as a developer you must let me know! I will have to add you as a developer to the project*.
+ *This requires an active reddit account.
+ 
  This project was created using the Angular 2: Quick Start Repository on GitHub. For this project it was incredibly helpful getting started and being able to start working almost immediately. The link is below:
  https://github.com/angular/quickstart/blob/master/README.md
