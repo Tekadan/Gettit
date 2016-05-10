@@ -1,6 +1,5 @@
 import { Injectable } from 'angular2/core';
 import { IPost } from './post';
-import { IAuthenticate } from '../authentication/authenticate';
 import { Http, Response, Headers } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
 
