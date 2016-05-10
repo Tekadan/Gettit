@@ -1,5 +1,4 @@
 import { Injectable } from 'angular2/core';
-import { IAuthenticate } from '../authentication/authenticate';
 import { Http, Response } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -17,7 +16,7 @@ export class AuthenticationService {
     private _localHostPort: number = 3000;
     private _responseType: string = 'code';
     private _state: string = Date.now().toString();
-    private _redirectUri: string = 'http://localhost:' + this._localHostPort;
+    private _redirectUri: string = 'http://localhost:' + this._localHostPort + 'AuthenticationRedirect';
     private _duration: string = 'temporary';
     private _scope = 'read'; 
     

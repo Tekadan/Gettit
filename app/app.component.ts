@@ -6,6 +6,7 @@ import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/route
 import { PostListComponent } from './home/post-list.component';
 import { PostService } from './home/post.service';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthenticationRedirectComponent } from './authentication/authentication-redirect.component';
 
 @Component({
     selector: 'gettit-app',
@@ -24,6 +25,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 })
 @RouteConfig([
     { path: "/authenticate", name : "Authenicate", component: AuthenticationComponent, useAsDefault: true },
+    { path: "/authenticate-redirect", name: "AuthenticateRedirect", component: AuthenticationRedirectComponent},
     { path: "/home/:session", name: "Home", component: PostListComponent }
 ])
 export class AppComponent { 
