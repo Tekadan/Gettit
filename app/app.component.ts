@@ -11,7 +11,9 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     selector: 'gettit-app',
     template: `
     <h1>{{pageTitle}}</h1>
-    <gettit-authentication>Loading...</gettit-authentication>
+    <div class='container'>
+        <router-outlet></router-outlet>
+    </div>
     `,
     directives: [PostListComponent,
                  AuthenticationComponent,
@@ -22,7 +24,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 })
 @RouteConfig([
     { path: "/authenticate", name : "Authenicate", component: AuthenticationComponent, useAsDefault: true },
-    { path: "/home", name: "Home", component: PostListComponent }
+    { path: "/home/:session", name: "Home", component: PostListComponent }
 ])
 export class AppComponent { 
     pageTitle: string = 'Gettit: An Angular 2 Project cosuming the Reddit API';

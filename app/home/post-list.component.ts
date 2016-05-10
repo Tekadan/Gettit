@@ -3,6 +3,7 @@ import { Component, OnInit } from 'angular2/core';
 import { IPost } from './post';
 import { PostFilterPipe } from './post-filter.pipe';
 import { PostService } from './post.service';
+import { ISession } from './session';
 
 @Component({
     selector: 'gettit-postList',
@@ -16,9 +17,10 @@ export class PostListComponent implements OnInit {
     isRefreshing: boolean = false;
     pageTitle: string = 'Popular on Reddit';
     posts: IPost[];
+    session: ISession;
     
-    constructor(private _postService: PostService){
-
+    constructor(private _postService: PostService, injectedSession: ISession){
+        this.session = injectedSession;
     }
     
     ngOnInit(): void {
