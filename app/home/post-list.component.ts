@@ -3,7 +3,7 @@ import { Component, OnInit } from 'angular2/core';
 import { IPost } from './post';
 import { PostFilterPipe } from './post-filter.pipe';
 import { PostService } from './post.service';
-import { ISession } from './session';
+import { ISession } from '../authentication/session';
 
 @Component({
     selector: 'gettit-postList',

@@ -1,5 +1,5 @@
 import { Component } from 'angular2/core';
-import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from 'angular2/router';
 
 import { AuthenticationService } from './authentication.service';
 

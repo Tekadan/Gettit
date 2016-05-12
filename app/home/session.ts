@@ -1,7 +1,0 @@
-export interface ISession {
-    access_token: string;
-    token_type: string;
-    expires_in: string;
-    scope: string;
-    refresh_token: string;
-}

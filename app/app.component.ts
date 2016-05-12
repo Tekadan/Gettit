@@ -4,9 +4,9 @@ import 'rxjs/Rx';
 import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
 import { PostListComponent } from './home/post-list.component';
-import { PostService } from './home/post.service';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthenticationRedirectComponent } from './authentication/authentication-redirect.component';
+import { ISession } from './authentication/session';
 
 @Component({
     selector: 'gettit-app',
@@ -16,16 +16,13 @@ import { AuthenticationRedirectComponent } from './authentication/authentication
         <router-outlet></router-outlet>
     </div>
     `,
-    directives: [PostListComponent,
-                 AuthenticationComponent,
-                 ROUTER_DIRECTIVES],
-    providers: [PostService,
-                HTTP_PROVIDERS,
+    directives: [ROUTER_DIRECTIVES],
+    providers: [HTTP_PROVIDERS,
                 ROUTER_PROVIDERS]
 })
 @RouteConfig([
     { path: "/authenticate", name : "Authenicate", component: AuthenticationComponent, useAsDefault: true },
-    { path: "/authenticate-redirect", name: "AuthenticateRedirect", component: AuthenticationRedirectComponent},
+    { path: "/authenticate-redirect", name: "AuthenticationRedirect", component: AuthenticationRedirectComponent },
     { path: "/home/:session", name: "Home", component: PostListComponent }
 ])
 export class AppComponent { 

@@ -1,5 +1,5 @@
 import { Injectable } from 'angular2/core';
-import { Http, Response } from 'angular2/http';
+import { Http, Response, Headers } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class AuthenticationService {
     private _localHostPort: number = 3000;
     private _responseType: string = 'code';
     private _state: string = Date.now().toString();
-    private _redirectUri: string = 'http://localhost:' + this._localHostPort + 'AuthenticationRedirect';
+    private _redirectUri: string = 'http://localhost:' + this._localHostPort + '/authentication-redirect';
     private _duration: string = 'temporary';
     private _scope = 'read'; 
     
@@ -25,22 +25,17 @@ export class AuthenticationService {
     }
     
     authorizeApp(): void {
-        this.authenticateUser()
-            .subscribe(
-                token => this._token = token,
-                error => this._errorMessage = <any>error
-            );
+        this.authenticateUser();
     }
     
-    private authenticateUser(): Observable<string> {
-        var postBody = this.createAuthPostBody();
+    private authenticateUser(): void {
+        var authURL = this.createAuthURL();
         
-        return this._http.post(this._accessTokenUrl, postBody)
-            .map((response: Response) => <string>response.json())
-            .catch(this.handleError);
+        console.log("Redirecting Application to: '" + authURL + "'");
+        window.location.href = this.createAuthURL();
     }
     
-    private createAuthPostBody(): string {
+    private createAuthURL(): string {
         var postBody = { "client_id": this._clientId,
                          "response_type": this._responseType,
                          "state": this._state,
@@ -48,7 +43,7 @@ export class AuthenticationService {
                          "duration": this._duration,
                          "scope": this._scope
                         };
-        return this.objectToUrlEncoding(postBody);
+        return this._accessTokenUrl + this.objectToUrlEncoding(postBody);
     }
     
     private objectToUrlEncoding(object: Object): string {
@@ -60,8 +55,14 @@ export class AuthenticationService {
             str += key + "=" + encodeURIComponent(object[key]);
         }
         
-        console.log("Post Body to Url Encoding: " + str);
         return str;
+    }
+    
+    private getHeaders(): Headers {
+        var headers = new Headers();
+        headers.append('Access-Control-Allow-Origin', this._accessTokenUrl);
+        
+        return headers;
     }
     
     private handleError(error: Response){
@@ -71,3 +72,5 @@ export class AuthenticationService {
         return Observable.throw(error.json().error || 'Server Error');
     }
 }
+
+//https://ssl.reddit.com/api/v1/authorize?client_id=m3lFlzf9HC1VFg&response_type=code&state=1463055045605&redirect_uri=localhost%3A3000%2FAuthenticationRedirect&duration=temporary&scope=read
